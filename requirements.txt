@@ -1,0 +1,19 @@
+beautifulsoup4==4.8.2
+chardet==3.0.4
+cssselect==1.1.0
+cython==0.29.14
+-e git+git@github.com:dragnet-org/dragnet.git@1b65e7b0897ca061b5c90b3eefffbfc156a0cc3b#egg=dragnet
+feedfinder2==0.0.4
+feedparser==5.2.1
+jieba3k==0.35.1
+html-text==0.5.1
+lxml==4.4.2
+newspaper3k==0.2.8
+nltk==3.4.5
+numpy==1.18.1
+readability-lxml==0.7.1
+soupsieve==1.9.5
+scikit-learn==0.19.1  # same version as used by dragnet
+scipy==1.4.1
+tinysegmenter==0.3
+tldextract==2.2.2
