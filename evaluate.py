@@ -28,7 +28,8 @@ def main():
         print('{name:<20} '
               'precision={precision:.3f} ± {precision_ci:.3f}  '
               'recall={recall:.3f} ± {recall_ci:.3f}  '
-              'F1={f1:.3f} ± {f1_ci:.3f}'
+              'F1={f1:.3f} ± {f1_ci:.3f} '
+              'accuracy={accuracy:.3f} ± {accuracy_ci:.3f} '
               .format(name=name, **metrics))
         metrics_by_name[name] = metrics
 
@@ -56,12 +57,15 @@ def evaluate(
     if ground_truth.keys() != prediction.keys():
         raise ValueError('prediction keys do not match ground truth')
     tp_fp_fns = []
+    accuracies = []
     for key in ground_truth.keys():
-        tp_fp_fns.append(string_shingle_matching(
-            true=ground_truth[key].get('articleBody', ''),
-            pred=prediction[key].get('articleBody', '')))
+        true = ground_truth[key].get('articleBody', '')
+        pred = prediction[key].get('articleBody', '')
+        tp_fp_fns.append(string_shingle_matching(true=true, pred=pred))
+        accuracies.append(get_accuracy(true=true, pred=pred))
     metrics: Dict[str, Any] = metrics_from_tp_fp_fns(tp_fp_fns)
     metrics['tp_fp_fns'] = tp_fp_fns
+    metrics['accuracy'] = statistics.mean(accuracies)
 
     # add bootstrap estimates of condifence intervals
     b_values: Dict[str, List[float]] = {}
@@ -71,6 +75,8 @@ def evaluate(
         b_metrics = metrics_from_tp_fp_fns([tp_fp_fns[i] for i in indices])
         for key in b_metrics:
             b_values.setdefault(key, []).append(b_metrics[key])
+        b_values.setdefault('accuracy', []).append(
+            statistics.mean([accuracies[i] for i in indices]))
     for key, values in sorted(b_values.items()):
         metrics[f'{key}_ci'] = 1.96 * statistics.stdev(values)
 
@@ -125,6 +131,10 @@ def recall_score(tp: float, fp: float, fn: float) -> float:
     if tp == fn == 0:
         return 0.
     return tp / (tp + fn)
+
+
+def get_accuracy(true: str, pred: str) -> float:
+    return float(_tokenize(true) == _tokenize(pred))
 
 
 def string_shingle_matching(
