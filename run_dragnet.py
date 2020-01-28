@@ -14,7 +14,7 @@ def main():
         item_id = path.stem.split('.')[0]
         content = extract_content(html, encoding='utf8')
         output[item_id] = {'articleBody': content}
-    Path('output-dragnet.json').write_text(
+    (Path('output') / 'dragnet.json').write_text(
         json.dumps(output, sort_keys=True, ensure_ascii=False, indent=4),
         encoding='utf8')
 

@@ -18,7 +18,7 @@ def main():
         article.set_html(html)
         article.parse()
         output[item_id] = {'articleBody': article.text}
-    Path('output-newspaper.json').write_text(
+    (Path('output') / 'newspaper.json').write_text(
         json.dumps(output, sort_keys=True, ensure_ascii=False, indent=4),
         encoding='utf8')
 

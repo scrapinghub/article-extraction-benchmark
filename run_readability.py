@@ -16,7 +16,7 @@ def main():
         doc = Document(html)
         text = html_text.extract_text(doc.summary(html_partial=True))
         output[item_id] = {'articleBody': text}
-    Path('output-readability.json').write_text(
+    (Path('output') / 'readability.json').write_text(
         json.dumps(output, sort_keys=True, ensure_ascii=False, indent=4),
         encoding='utf8')
 

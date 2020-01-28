@@ -13,7 +13,7 @@ def main():
             html = f.read()
         item_id = path.stem.split('.')[0]
         output[item_id] = {'articleBody': html_text.extract_text(html)}
-    Path('output-html-text.json').write_text(
+    (Path('output') / 'html-text.json').write_text(
         json.dumps(output, sort_keys=True, ensure_ascii=False, indent=4),
         encoding='utf8')
 

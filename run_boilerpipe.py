@@ -16,7 +16,8 @@ def main():
         item_id = os.path.basename(path).split('.')[0]
         extractor = Extractor(extractor='ArticleExtractor', html=html)
         output[item_id] = {'articleBody': extractor.getText()}
-    with codecs.open('output-boilerpipe.json', 'wt', encoding='utf8') as f:
+    with codecs.open(os.path.join('output', 'boilerpipe.json'),
+                     'wt', encoding='utf8') as f:
         json.dump(output, f, sort_keys=True, ensure_ascii=False, indent=4)
 
 
