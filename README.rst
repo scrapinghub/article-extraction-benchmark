@@ -65,6 +65,9 @@ For evaluation, run::
 
     python3 evaluation.py
 
+We report precision, recall, F1, accuracy and their standard deviation estimated with bootstrap.
+Please refer to the technical report for more details.
+
 License
 -------
 

@@ -26,10 +26,10 @@ def main():
         name = path.stem
         metrics = evaluate(ground_truth, load_json(path), args.n_bootstrap)
         print('{name:<20} '
-              'precision={precision:.3f} ± {precision_ci:.3f}  '
-              'recall={recall:.3f} ± {recall_ci:.3f}  '
-              'F1={f1:.3f} ± {f1_ci:.3f} '
-              'accuracy={accuracy:.3f} ± {accuracy_ci:.3f} '
+              'precision={precision:.3f} ± {precision_std:.3f}  '
+              'recall={recall:.3f} ± {recall_std:.3f}  '
+              'F1={f1:.3f} ± {f1_std:.3f} '
+              'accuracy={accuracy:.3f} ± {accuracy_std:.3f} '
               .format(name=name, **metrics))
         metrics_by_name[name] = metrics
 
@@ -78,7 +78,7 @@ def evaluate(
         b_values.setdefault('accuracy', []).append(
             statistics.mean([accuracies[i] for i in indices]))
     for key, values in sorted(b_values.items()):
-        metrics[f'{key}_ci'] = 1.96 * statistics.stdev(values)
+        metrics[f'{key}_std'] = statistics.stdev(values)
 
     return metrics
 
@@ -95,8 +95,8 @@ def print_metrics_diff(tp_fp_fns, other_tp_fp_fns, n_bootstrap):
             diffs.setdefault(key, []).append(metrics[key] - other_metrics[key])
     for key, values in sorted(diffs.items()):
         mean = statistics.mean(values)
-        confidence_interval = 1.96 * statistics.stdev(values)
-        print(f'{key:<10} {mean:.3f} ± {confidence_interval:.3f}')
+        std = statistics.stdev(values)
+        print(f'{key:<10} {mean:.3f} ± {std:.3f}')
 
 
 TP_FP_FN = Tuple[float, float, float]
