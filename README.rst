@@ -47,7 +47,7 @@ or external resources:
   this is a baseline which extracts the full text of HTML page
 
 Output from these libraries is already present in the repo in ``output/*.json`` files.
-They were generated with ``run_*.py`` files.
+They were generated with ``extractors/run_*.py`` files.
 
 All dependencies are in ``requirements.txt``.
 Note that dragnet may fail to install at first try, as
