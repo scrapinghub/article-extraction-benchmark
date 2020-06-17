@@ -3,6 +3,37 @@ Article extraction benchmark
 
 This repo allows to reproduce results of article extraction benchmark.
 
+We evaluate the quality of article body
+extraction for AutoExtract (ours), Diffbot, newspaper3k, readability-lxml,
+dragnet, boilerpipe and html-text. We release evaluation datasets and scripts,
+and provide more details in a whitepaper.
+
+.. contents::
+
+Results
+-------
+
+Results of the evaluation (see below for reproduction and details)::
+
+    AutoExtract          precision=0.984 ± 0.002  recall=0.956 ± 0.010  F1=0.970 ± 0.005 accuracy=0.470 ± 0.037
+    Diffbot              precision=0.958 ± 0.009  recall=0.944 ± 0.013  F1=0.951 ± 0.010 accuracy=0.348 ± 0.038
+    boilerpipe           precision=0.850 ± 0.016  recall=0.870 ± 0.020  F1=0.860 ± 0.016 accuracy=0.006 ± 0.006
+    dragnet              precision=0.925 ± 0.013  recall=0.889 ± 0.019  F1=0.907 ± 0.014 accuracy=0.221 ± 0.030
+    html-text            precision=0.500 ± 0.017  recall=0.994 ± 0.001  F1=0.665 ± 0.015 accuracy=0.000 ± 0.000
+    newspaper            precision=0.917 ± 0.014  recall=0.906 ± 0.018  F1=0.912 ± 0.014 accuracy=0.260 ± 0.032
+    readability          precision=0.913 ± 0.014  recall=0.931 ± 0.016  F1=0.922 ± 0.014 accuracy=0.315 ± 0.035
+    xpath-text           precision=0.246 ± 0.016  recall=0.992 ± 0.001  F1=0.394 ± 0.020 accuracy=0.000 ± 0.000
+
+More details
+------------
+
+More details are available:
+
+- In the whitepaper at https://www.scrapinghub.com/
+- In a technical report attached to the v1.0.0 release at
+  https://github.com/scrapinghub/article-extraction-benchmark/releases/tag/v1.0.0
+- A live AutoExtract demo is at https://www.scrapinghub.com/data-api-news
+
 Installation
 ------------
 
