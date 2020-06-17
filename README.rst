@@ -1,12 +1,16 @@
 Article extraction benchmark
 ============================
 
-This repo allows to reproduce results of article extraction benchmark.
-
 We evaluate the quality of article body
 extraction for AutoExtract (ours), Diffbot, newspaper3k, readability-lxml,
 dragnet, boilerpipe and html-text. We release evaluation datasets and scripts,
 and provide more details in a whitepaper.
+
+Article extraction is a task of extracting certain fields of an article
+(e.g. news or blog post), such as headline, article body, publication date,
+authors, etc. Article extraction systems must work on any web-site.
+Here we evaluate only the article body field, as this is one of the most important fields
+and one of the hardest to get right.
 
 .. contents::
 
