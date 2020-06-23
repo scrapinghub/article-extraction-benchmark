@@ -58,7 +58,7 @@ with the following fields:
 - ``url``: page url (optional)
 
 All files should have the same keys.
-Ground truth is in ``groud-truth.json``,
+Ground truth is in ``ground-truth.json``,
 predictions from different systems is in ``output/*.json`` files.
 
 HTML files are in ``html`` folder. They were fetched with Splash headless
