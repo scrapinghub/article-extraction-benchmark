@@ -1,5 +1,5 @@
-Article extraction benchmark
-============================
+Article extraction benchmark: open-source libraries and commercial services
+===========================================================================
 
 We evaluate the quality of article body
 extraction for AutoExtract (ours), Diffbot, newspaper3k, readability-lxml,
@@ -33,7 +33,7 @@ More details
 
 More details are available:
 
-- In the whitepaper at https://www.scrapinghub.com/
+- In the whitepaper at https://info.scrapinghub.com/en/in-depth-analysis-and-evaluation-on-the-quality-of-article-body-extraction
 - In a technical report attached to the v1.0.0 release at
   https://github.com/scrapinghub/article-extraction-benchmark/releases/tag/v1.0.0
 - A live AutoExtract demo is at https://www.scrapinghub.com/data-api-news
