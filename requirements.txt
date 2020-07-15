@@ -17,3 +17,4 @@ scikit-learn==0.19.1  # same version as used by dragnet
 scipy==1.4.1
 tinysegmenter==0.3
 tldextract==2.2.2
+trafilatura==0.5.1
