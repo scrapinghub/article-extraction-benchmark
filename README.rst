@@ -17,7 +17,7 @@ and one of the hardest to get right.
 Results
 -------
 
-Results of the evaluation (see below for reproduction and details)::
+Results of the original evaluation (see below for reproduction and details)::
 
     AutoExtract          precision=0.984 ± 0.002  recall=0.956 ± 0.010  F1=0.970 ± 0.005 accuracy=0.470 ± 0.037
     Diffbot              precision=0.958 ± 0.009  recall=0.944 ± 0.013  F1=0.951 ± 0.010 accuracy=0.348 ± 0.038
@@ -27,6 +27,10 @@ Results of the evaluation (see below for reproduction and details)::
     newspaper            precision=0.917 ± 0.014  recall=0.906 ± 0.018  F1=0.912 ± 0.014 accuracy=0.260 ± 0.032
     readability          precision=0.913 ± 0.014  recall=0.931 ± 0.016  F1=0.922 ± 0.014 accuracy=0.315 ± 0.035
     xpath-text           precision=0.246 ± 0.016  recall=0.992 ± 0.001  F1=0.394 ± 0.020 accuracy=0.000 ± 0.000
+
+Result of packages added after original evaluation::
+
+    trafilatura          precision=0.925 ± 0.011  recall=0.966 ± 0.009  F1=0.945 ± 0.009 accuracy=0.221 ± 0.031
 
 More details
 ------------
@@ -80,6 +84,8 @@ or external resources:
 - boilerpipe: https://github.com/misja/python-boilerpipe
 - html-text: https://github.com/TeamHG-Memex/html-text -
   this is a baseline which extracts the full text of HTML page
+- trafilatura: https://github.com/adbar/trafilatura contributed by the author
+  at https://github.com/scrapinghub/article-extraction-benchmark/pull/4
 
 Output from these libraries is already present in the repo in ``output/*.json`` files.
 They were generated with ``extractors/run_*.py`` files.
