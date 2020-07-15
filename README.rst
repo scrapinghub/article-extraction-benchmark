@@ -17,7 +17,7 @@ and one of the hardest to get right.
 Results
 -------
 
-Results of the original evaluation (see below for reproduction and details)::
+Results of the initial evaluation::
 
     AutoExtract          precision=0.984 ± 0.002  recall=0.956 ± 0.010  F1=0.970 ± 0.005 accuracy=0.470 ± 0.037
     Diffbot              precision=0.958 ± 0.009  recall=0.944 ± 0.013  F1=0.951 ± 0.010 accuracy=0.348 ± 0.038
@@ -31,6 +31,8 @@ Results of the original evaluation (see below for reproduction and details)::
 Result of packages added after original evaluation::
 
     trafilatura          precision=0.925 ± 0.011  recall=0.966 ± 0.009  F1=0.945 ± 0.009 accuracy=0.221 ± 0.031
+
+Below you can find more deatails about the packages and result reproduction.
 
 More details
 ------------
