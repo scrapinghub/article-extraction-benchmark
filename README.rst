@@ -32,7 +32,7 @@ Result of packages added after original evaluation::
 
     trafilatura          precision=0.925 ± 0.011  recall=0.966 ± 0.009  F1=0.945 ± 0.009 accuracy=0.221 ± 0.031
 
-Below you can find more deatails about the packages and result reproduction.
+Below you can find more details about the packages and result reproduction.
 
 More details
 ------------
