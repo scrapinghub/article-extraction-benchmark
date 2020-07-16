@@ -2,8 +2,17 @@ Article extraction benchmark: open-source libraries and commercial services
 ===========================================================================
 
 We evaluate the quality of article body
-extraction for `AutoExtract (ours) <https://www.scrapinghub.com/data-api-news>`_, `Diffbot <https://www.diffbot.com/>`_, `newspaper3k <https://newspaper.readthedocs.io/en/latest/>`_, `readability-lxml <https://github.com/buriy/python-readability>`_,
-`dragnet <https://github.com/dragnet-org/dragnet>`_, `boilerpipe <https://github.com/misja/python-boilerpipe>`_ and `html-text <https://github.com/TeamHG-Memex/html-text>`_. We release evaluation datasets and scripts,
+extraction for commercial services
+`AutoExtract (ours) <https://www.scrapinghub.com/data-api-news>`_,
+`Diffbot <https://www.diffbot.com/>`_
+and open-source libraries
+`newspaper3k <https://newspaper.readthedocs.io/en/latest/>`_,
+`readability-lxml <https://github.com/buriy/python-readability>`_,
+`dragnet <https://github.com/dragnet-org/dragnet>`_,
+`boilerpipe <https://github.com/misja/python-boilerpipe>`_,
+`html-text <https://github.com/TeamHG-Memex/html-text>`_,
+`trafilatura <https://github.com/adbar/trafilatura>`_.
+We release evaluation datasets and scripts,
 and provide more details in a whitepaper.
 
 Article extraction is a task of extracting certain fields of an article
