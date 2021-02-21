@@ -1,0 +1,21 @@
+name: Evaluate
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  evaluator:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+
+      - run: python3 evaluate.py
