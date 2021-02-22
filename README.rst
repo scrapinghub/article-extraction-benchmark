@@ -11,7 +11,8 @@ and open-source libraries
 `dragnet <https://github.com/dragnet-org/dragnet>`_,
 `boilerpipe <https://github.com/misja/python-boilerpipe>`_,
 `html-text <https://github.com/TeamHG-Memex/html-text>`_,
-`trafilatura <https://github.com/adbar/trafilatura>`_.
+`trafilatura <https://github.com/adbar/trafilatura>`_,
+`Readability.js <https://www.npmjs.com/package/@mozilla/readability>`_.
 We release evaluation datasets and scripts,
 and provide more details in a whitepaper.
 
@@ -40,6 +41,7 @@ Results of the initial evaluation::
 Result of packages added after original evaluation::
 
     trafilatura          precision=0.925 ± 0.011  recall=0.966 ± 0.009  F1=0.945 ± 0.009 accuracy=0.221 ± 0.031
+    readability_js       precision=0.853 ± 0.013  recall=0.924 ± 0.012  F1=0.887 ± 0.012 accuracy=0.149 ± 0.026
 
 Below you can find more details about the packages and result reproduction.
 
@@ -96,6 +98,7 @@ or external resources:
   this is a baseline which extracts the full text of HTML page
 - trafilatura: https://github.com/adbar/trafilatura contributed by the author
   at https://github.com/scrapinghub/article-extraction-benchmark/pull/4
+- Readability.js: https://www.npmjs.com/package/@mozilla/readability
 
 Output from these libraries is already present in the repo in ``output/*.json`` files.
 They were generated with ``extractors/run_*.py`` files.
@@ -108,6 +111,9 @@ you need to have ``numpy`` and ``Cython`` installed, and have ``libxml2`` header
 boilerpipe requires a custom installation: use python2, you also need Java
 (e.g. install ``default-jre`` in Ubuntu), install it with
 ``pip install -e git+https://github.com/misja/python-boilerpipe.git@ab3694d7bf695b73f0684a028e70aa816d63e6cb#egg=boilerpipe``
+
+Readability.js require a custom installation too: install nodejs and install cli tool:
+``npm install -g readability-cli@2.2.1-pre``
 
 Evaluation
 ----------
