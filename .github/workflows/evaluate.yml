@@ -35,5 +35,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          msg: "```${{ steps.evaluation.outputs.result }}```"
+          msg: "```\n${{ steps.evaluation.outputs.result }}\n```"
           check_for_duplicate_msg: true
