@@ -23,6 +23,10 @@ jobs:
         run: |
           RESULT=$(python3 evaluate.py)
           echo "${RESULT}"
+          # hack for multiline output
+          RESULT="${RESULT//'%'/'%25'}"
+          RESULT="${RESULT//$'\n'/'%0A'}"
+          RESULT="${RESULT//$'\r'/'%0D'}"
           echo "::set-output name=result::${RESULT}"
 
       - name: Send Results as Comment
