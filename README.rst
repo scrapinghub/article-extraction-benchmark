@@ -12,7 +12,7 @@ and open-source libraries
 `boilerpipe <https://github.com/misja/python-boilerpipe>`_,
 `html-text <https://github.com/TeamHG-Memex/html-text>`_,
 `trafilatura <https://github.com/adbar/trafilatura>`_,
-`Readability.js <https://www.npmjs.com/package/@mozilla/readability>`_.
+`Readability.js <https://github.com/mozilla/readability>`_.
 We release evaluation datasets and scripts,
 and provide more details in a whitepaper.
 
@@ -98,7 +98,7 @@ or external resources:
   this is a baseline which extracts the full text of HTML page
 - trafilatura: https://github.com/adbar/trafilatura contributed by the author
   at https://github.com/scrapinghub/article-extraction-benchmark/pull/4
-- Readability.js: https://www.npmjs.com/package/@mozilla/readability
+- Readability.js: https://github.com/mozilla/readability
 
 Output from these libraries is already present in the repo in ``output/*.json`` files.
 They were generated with ``extractors/run_*.py`` files.
