@@ -18,4 +18,18 @@ jobs:
         with:
           python-version: '3.7'
 
-      - run: python3 evaluate.py
+      - name: Run Evaluation
+        id: evaluation
+        run: |
+          RESULT=$(python3 evaluate.py)
+          echo "${RESULT}"
+          echo "::set-output name=result::${RESULT}"
+
+      - name: Send Results as Comment
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: unsplash/comment-on-pr@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          msg: "${{ steps.evaluation.outputs.result }}"
+          check_for_duplicate_msg: true
