@@ -28,12 +28,3 @@ jobs:
           RESULT="${RESULT//$'\n'/'%0A'}"
           RESULT="${RESULT//$'\r'/'%0D'}"
           echo "::set-output name=result::${RESULT}"
-
-      - name: Send Results as Comment
-        if: ${{ github.event_name == 'pull_request' }}
-        uses: unsplash/comment-on-pr@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          msg: "```\n${{ steps.evaluation.outputs.result }}\n```"
-          check_for_duplicate_msg: true
