@@ -13,7 +13,8 @@ and open-source libraries
 `html-text <https://github.com/TeamHG-Memex/html-text>`_,
 `trafilatura <https://github.com/adbar/trafilatura>`_,
 `go-readability <https://github.com/go-shiori/go-readability>`_,
-`Readability.js <https://github.com/mozilla/readability>`_.
+`Readability.js <https://github.com/mozilla/readability>`_,
+`inscriptis <https://github.com/weblyzard/inscriptis>`_.
 We release evaluation datasets and scripts,
 and provide more details in a whitepaper.
 
@@ -44,6 +45,7 @@ Result of packages added after original evaluation::
     trafilatura          precision=0.925 ± 0.011  recall=0.966 ± 0.009  F1=0.945 ± 0.009 accuracy=0.221 ± 0.031
     go_readability       precision=0.912 ± 0.009  recall=0.975 ± 0.007  F1=0.943 ± 0.007 accuracy=0.210 ± 0.030
     readability_js       precision=0.853 ± 0.013  recall=0.924 ± 0.012  F1=0.887 ± 0.012 accuracy=0.149 ± 0.026
+    inscriptis           precision=0.517 ± 0.017  recall=0.993 ± 0.001  F1=0.679 ± 0.015 accuracy=0.000 ± 0.000
 
 Below you can find more details about the packages and result reproduction.
 
@@ -102,6 +104,7 @@ or external resources:
   at https://github.com/scrapinghub/article-extraction-benchmark/pull/4
 - go-readability: https://github.com/go-shiori/go-readability
 - Readability.js: https://github.com/mozilla/readability
+- inscriptis: https://github.com/weblyzard/inscriptis
 
 Output from these libraries is already present in the repo in ``output/*.json`` files.
 They were generated with ``extractors/run_*.py`` files.

@@ -18,3 +18,4 @@ scipy==1.4.1
 tinysegmenter==0.3
 tldextract==2.2.2
 trafilatura==0.5.1
+inscriptis==1.1.2
