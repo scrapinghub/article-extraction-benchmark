@@ -3,7 +3,7 @@ Go-DomDistiller
 
 Open Source article extractor written on golang: https://github.com/markusmobius/go-domdistiller.
 Based on `DOM Distiller <https://chromium.googlesource.com/chromium/dom-distiller>`_ which is part of the Chromium project that is built using Java language.
-The structure of this package follows the structure of the original Java code
+The structure of this package follows the structure of the original Java code.
 
 Usage
 -----
