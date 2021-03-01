@@ -23,7 +23,7 @@ def main():
         with open(temp_filepath, 'wt') as fw:
             fw.write(html)
 
-        # get extracted content from go-readadbility
+        # get extracted content from go-domdistiller
         result = subprocess.run([CLI_PATH, temp_filepath], stdout=subprocess.PIPE)
 
         # destroy temp file
