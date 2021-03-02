@@ -14,6 +14,10 @@ and open-source libraries
 `trafilatura <https://github.com/adbar/trafilatura>`_,
 `go-readability <https://github.com/go-shiori/go-readability>`_,
 `Readability.js <https://github.com/mozilla/readability>`_,
+`Go-DomDistiller <https://github.com/markusmobius/go-domdistiller>`_.
+`news-please <https://github.com/fhamborg/news-please>`_.
+`Goose3 <https://github.com/goose3/goose3>`_,
+`inscriptis <https://github.com/weblyzard/inscriptis>`_,
 `html2text <https://github.com/Alir3z4/html2text>`_.
 We release evaluation datasets and scripts,
 and provide more details in a whitepaper.
@@ -45,6 +49,10 @@ Result of packages added after original evaluation::
     trafilatura          precision=0.925 ± 0.011  recall=0.966 ± 0.009  F1=0.945 ± 0.009 accuracy=0.221 ± 0.031
     go_readability       precision=0.912 ± 0.009  recall=0.975 ± 0.007  F1=0.943 ± 0.007 accuracy=0.210 ± 0.030
     readability_js       precision=0.853 ± 0.013  recall=0.924 ± 0.012  F1=0.887 ± 0.012 accuracy=0.149 ± 0.026
+    go_domdistiller      precision=0.901 ± 0.010  recall=0.956 ± 0.010  F1=0.927 ± 0.007 accuracy=0.066 ± 0.018
+    news_please          precision=0.917 ± 0.013  recall=0.906 ± 0.018  F1=0.911 ± 0.014 accuracy=0.249 ± 0.032
+    goose3               precision=0.930 ± 0.015  recall=0.847 ± 0.021  F1=0.887 ± 0.016 accuracy=0.227 ± 0.032
+    inscriptis           precision=0.517 ± 0.017  recall=0.993 ± 0.001  F1=0.679 ± 0.015 accuracy=0.000 ± 0.000
     html2text            precision=0.499 ± 0.017  recall=0.983 ± 0.002  F1=0.662 ± 0.015 accuracy=0.000 ± 0.000
 
 Below you can find more details about the packages and result reproduction.
@@ -104,6 +112,11 @@ or external resources:
   at https://github.com/scrapinghub/article-extraction-benchmark/pull/4
 - go-readability: https://github.com/go-shiori/go-readability
 - Readability.js: https://github.com/mozilla/readability
+- Go-DomDistiller: https://github.com/markusmobius/go-domdistiller
+- news-please: https://github.com/fhamborg/news-please
+- Goose3: https://github.com/goose3/goose3
+- inscriptis: https://github.com/weblyzard/inscriptis -
+  converts HTML to text with a particular emphasis on nested tables
 - html2text: https://github.com/Alir3z4/html2text -
   converts HTML pages to Markup language
 
@@ -119,10 +132,12 @@ boilerpipe requires a custom installation: use python2, you also need Java
 (e.g. install ``default-jre`` in Ubuntu), install it with
 ``pip install -e git+https://github.com/misja/python-boilerpipe.git@ab3694d7bf695b73f0684a028e70aa816d63e6cb#egg=boilerpipe``
 
-go-readability requires a custom installation too: see README in ``extractors/go_readability``.
+go-readability requires a custom installation: see README in ``extractors/go_readability``.
 
-Readability.js require a custom installation too: install nodejs and install cli tool:
+Readability.js require a custom installation: install nodejs and install cli tool:
 ``npm install -g readability-cli@2.2.1-pre``
+
+Go-DomDistiller requires a custom installation: see README in ``extractors/go_domdistiller``.
 
 Evaluation
 ----------
