@@ -16,6 +16,7 @@ and open-source libraries
 `Readability.js <https://github.com/mozilla/readability>`_,
 `Go-DomDistiller <https://github.com/markusmobius/go-domdistiller>`_.
 `news-please <https://github.com/fhamborg/news-please>`_.
+`Goose3 <https://github.com/goose3/goose3>`_.
 We release evaluation datasets and scripts,
 and provide more details in a whitepaper.
 
@@ -48,6 +49,7 @@ Result of packages added after original evaluation::
     readability_js       precision=0.853 ± 0.013  recall=0.924 ± 0.012  F1=0.887 ± 0.012 accuracy=0.149 ± 0.026
     go_domdistiller      precision=0.901 ± 0.010  recall=0.956 ± 0.010  F1=0.927 ± 0.007 accuracy=0.066 ± 0.018
     news_please          precision=0.917 ± 0.013  recall=0.906 ± 0.018  F1=0.911 ± 0.014 accuracy=0.249 ± 0.032
+    goose3               precision=0.930 ± 0.015  recall=0.847 ± 0.021  F1=0.887 ± 0.016 accuracy=0.227 ± 0.032
 
 Below you can find more details about the packages and result reproduction.
 
@@ -108,6 +110,7 @@ or external resources:
 - Readability.js: https://github.com/mozilla/readability
 - Go-DomDistiller: https://github.com/markusmobius/go-domdistiller
 - news-please: https://github.com/fhamborg/news-please
+- Goose3: https://github.com/goose3/goose3
 
 Output from these libraries is already present in the repo in ``output/*.json`` files.
 They were generated with ``extractors/run_*.py`` files.
