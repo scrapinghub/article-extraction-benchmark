@@ -17,7 +17,8 @@ and open-source libraries
 `Go-DomDistiller <https://github.com/markusmobius/go-domdistiller>`_.
 `news-please <https://github.com/fhamborg/news-please>`_.
 `Goose3 <https://github.com/goose3/goose3>`_,
-`inscriptis <https://github.com/weblyzard/inscriptis>`_.
+`inscriptis <https://github.com/weblyzard/inscriptis>`_,
+`html2text <https://github.com/Alir3z4/html2text>`_.
 We release evaluation datasets and scripts,
 and provide more details in a whitepaper.
 
@@ -52,6 +53,7 @@ Result of packages added after original evaluation::
     news_please          precision=0.917 ± 0.013  recall=0.906 ± 0.018  F1=0.911 ± 0.014 accuracy=0.249 ± 0.032
     goose3               precision=0.930 ± 0.015  recall=0.847 ± 0.021  F1=0.887 ± 0.016 accuracy=0.227 ± 0.032
     inscriptis           precision=0.517 ± 0.017  recall=0.993 ± 0.001  F1=0.679 ± 0.015 accuracy=0.000 ± 0.000
+    html2text            precision=0.499 ± 0.017  recall=0.983 ± 0.002  F1=0.662 ± 0.015 accuracy=0.000 ± 0.000
 
 Below you can find more details about the packages and result reproduction.
 
@@ -115,6 +117,8 @@ or external resources:
 - Goose3: https://github.com/goose3/goose3
 - inscriptis: https://github.com/weblyzard/inscriptis -
   converts HTML to text with a particular emphasis on nested tables
+- html2text: https://github.com/Alir3z4/html2text -
+  converts HTML pages to Markup language
 
 Output from these libraries is already present in the repo in ``output/*.json`` files.
 They were generated with ``extractors/run_*.py`` files.
