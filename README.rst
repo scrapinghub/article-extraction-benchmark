@@ -104,7 +104,8 @@ or external resources:
   at https://github.com/scrapinghub/article-extraction-benchmark/pull/4
 - go-readability: https://github.com/go-shiori/go-readability
 - Readability.js: https://github.com/mozilla/readability
-- inscriptis: https://github.com/weblyzard/inscriptis
+- inscriptis: https://github.com/weblyzard/inscriptis -
+  converts HTML to text with a particular emphasis on nested tables
 
 Output from these libraries is already present in the repo in ``output/*.json`` files.
 They were generated with ``extractors/run_*.py`` files.
