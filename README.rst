@@ -104,7 +104,8 @@ or external resources:
   at https://github.com/scrapinghub/article-extraction-benchmark/pull/4
 - go-readability: https://github.com/go-shiori/go-readability
 - Readability.js: https://github.com/mozilla/readability
-- html2text: https://github.com/Alir3z4/html2text
+- html2text: https://github.com/Alir3z4/html2text -
+  converts HTML pages to Markup language
 
 Output from these libraries is already present in the repo in ``output/*.json`` files.
 They were generated with ``extractors/run_*.py`` files.
