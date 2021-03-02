@@ -21,3 +21,4 @@ trafilatura==0.5.1
 news-please==1.5.17  # depend on half pypi projects...
 cchardet==2.1.7  # lost dependency in news-please
 goose3==3.1.8
+inscriptis==1.1.2
