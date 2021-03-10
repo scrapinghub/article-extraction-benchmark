@@ -144,7 +144,7 @@ Evaluation
 
 For evaluation, run::
 
-    python3 evaluation.py
+    python3 evaluate.py
 
 We report precision, recall, F1, accuracy and their standard deviation estimated with bootstrap.
 Please refer to the technical report for more details.
