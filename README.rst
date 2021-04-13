@@ -18,7 +18,8 @@ and open-source libraries
 `news-please <https://github.com/fhamborg/news-please>`_.
 `Goose3 <https://github.com/goose3/goose3>`_,
 `inscriptis <https://github.com/weblyzard/inscriptis>`_,
-`html2text <https://github.com/Alir3z4/html2text>`_.
+`html2text <https://github.com/Alir3z4/html2text>`_,
+`jusText <https://github.com/miso-belica/jusText>`_.
 We release evaluation datasets and scripts,
 and provide more details in a whitepaper.
 
@@ -54,6 +55,7 @@ Result of packages added after original evaluation::
     goose3               precision=0.930 ± 0.015  recall=0.847 ± 0.021  F1=0.887 ± 0.016 accuracy=0.227 ± 0.032
     inscriptis           precision=0.517 ± 0.017  recall=0.993 ± 0.001  F1=0.679 ± 0.015 accuracy=0.000 ± 0.000
     html2text            precision=0.499 ± 0.017  recall=0.983 ± 0.002  F1=0.662 ± 0.015 accuracy=0.000 ± 0.000
+    justext              precision=0.858 ± 0.017  recall=0.754 ± 0.028  F1=0.802 ± 0.018 accuracy=0.088 ± 0.021
 
 Below you can find more details about the packages and result reproduction.
 
@@ -119,6 +121,8 @@ or external resources:
   converts HTML to text with a particular emphasis on nested tables
 - html2text: https://github.com/Alir3z4/html2text -
   converts HTML pages to Markup language
+- jusText: https://github.com/miso-belica/jusText -
+  Heuristic based boilerplate removal tool
 
 Output from these libraries is already present in the repo in ``output/*.json`` files.
 They were generated with ``extractors/run_*.py`` files.
