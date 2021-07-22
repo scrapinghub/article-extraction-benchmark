@@ -35,29 +35,29 @@ and one of the hardest to get right.
 Results
 -------
 
-Results of the initial evaluation::
+Results of the initial evaluation, done in November 2019::
 
-    AutoExtract          precision=0.984 ± 0.002  recall=0.956 ± 0.010  F1=0.970 ± 0.005 accuracy=0.470 ± 0.037
-    Diffbot              precision=0.958 ± 0.009  recall=0.944 ± 0.013  F1=0.951 ± 0.010 accuracy=0.348 ± 0.038
-    boilerpipe           precision=0.850 ± 0.016  recall=0.870 ± 0.020  F1=0.860 ± 0.016 accuracy=0.006 ± 0.006
-    dragnet              precision=0.925 ± 0.013  recall=0.889 ± 0.019  F1=0.907 ± 0.014 accuracy=0.221 ± 0.030
-    html-text            precision=0.500 ± 0.017  recall=0.994 ± 0.001  F1=0.665 ± 0.015 accuracy=0.000 ± 0.000
-    newspaper            precision=0.917 ± 0.014  recall=0.906 ± 0.018  F1=0.912 ± 0.014 accuracy=0.260 ± 0.032
-    readability          precision=0.913 ± 0.014  recall=0.931 ± 0.016  F1=0.922 ± 0.014 accuracy=0.315 ± 0.035
-    xpath-text           precision=0.246 ± 0.016  recall=0.992 ± 0.001  F1=0.394 ± 0.020 accuracy=0.000 ± 0.000
+    AutoExtract       Nov 2019    precision=0.984 ± 0.002  recall=0.956 ± 0.010  F1=0.970 ± 0.005 accuracy=0.470 ± 0.037
+    Diffbot           Nov 2019    precision=0.958 ± 0.009  recall=0.944 ± 0.013  F1=0.951 ± 0.010 accuracy=0.348 ± 0.038
+    boilerpipe        ab3694d     precision=0.850 ± 0.016  recall=0.870 ± 0.020  F1=0.860 ± 0.016 accuracy=0.006 ± 0.006
+    dragnet           1b65e7b     precision=0.925 ± 0.013  recall=0.889 ± 0.019  F1=0.907 ± 0.014 accuracy=0.221 ± 0.030
+    html-text         0.5.1       precision=0.500 ± 0.017  recall=0.994 ± 0.001  F1=0.665 ± 0.015 accuracy=0.000 ± 0.000
+    newspaper3k       0.2.8       precision=0.917 ± 0.014  recall=0.906 ± 0.018  F1=0.912 ± 0.014 accuracy=0.260 ± 0.032
+    readability-lxml  0.7.1       precision=0.913 ± 0.014  recall=0.931 ± 0.016  F1=0.922 ± 0.014 accuracy=0.315 ± 0.035
+    xpath-text        4.4.2       precision=0.246 ± 0.016  recall=0.992 ± 0.001  F1=0.394 ± 0.020 accuracy=0.000 ± 0.000
 
 Result of packages added after original evaluation::
 
-    trafilatura          precision=0.925 ± 0.011  recall=0.966 ± 0.009  F1=0.945 ± 0.009 accuracy=0.221 ± 0.031
-    go_readability       precision=0.912 ± 0.009  recall=0.975 ± 0.007  F1=0.943 ± 0.007 accuracy=0.210 ± 0.030
-    readability_js       precision=0.853 ± 0.013  recall=0.924 ± 0.012  F1=0.887 ± 0.012 accuracy=0.149 ± 0.026
-    go_domdistiller      precision=0.901 ± 0.010  recall=0.956 ± 0.010  F1=0.927 ± 0.007 accuracy=0.066 ± 0.018
-    news_please          precision=0.917 ± 0.013  recall=0.906 ± 0.018  F1=0.911 ± 0.014 accuracy=0.249 ± 0.032
-    goose3               precision=0.930 ± 0.015  recall=0.847 ± 0.021  F1=0.887 ± 0.016 accuracy=0.227 ± 0.032
-    inscriptis           precision=0.517 ± 0.017  recall=0.993 ± 0.001  F1=0.679 ± 0.015 accuracy=0.000 ± 0.000
-    html2text            precision=0.499 ± 0.017  recall=0.983 ± 0.002  F1=0.662 ± 0.015 accuracy=0.000 ± 0.000
-    justext              precision=0.858 ± 0.017  recall=0.754 ± 0.028  F1=0.802 ± 0.018 accuracy=0.088 ± 0.021
-    beautifulsoup        precision=0.499 ± 0.017  recall=0.994 ± 0.001  F1=0.665 ± 0.015 accuracy=0.000 ± 0.000
+    trafilatura       0.5.1       precision=0.925 ± 0.011  recall=0.966 ± 0.009  F1=0.945 ± 0.009 accuracy=0.221 ± 0.031
+    go_readability    bdc8717     precision=0.912 ± 0.009  recall=0.975 ± 0.007  F1=0.943 ± 0.007 accuracy=0.210 ± 0.030
+    readability_js    Feb 2021    precision=0.853 ± 0.013  recall=0.924 ± 0.012  F1=0.887 ± 0.012 accuracy=0.149 ± 0.026
+    go_domdistiller   1c90a88     precision=0.901 ± 0.010  recall=0.956 ± 0.010  F1=0.927 ± 0.007 accuracy=0.066 ± 0.018
+    news_please       1.5.17      precision=0.917 ± 0.013  recall=0.906 ± 0.018  F1=0.911 ± 0.014 accuracy=0.249 ± 0.032
+    goose3            3.1.8       precision=0.930 ± 0.015  recall=0.847 ± 0.021  F1=0.887 ± 0.016 accuracy=0.227 ± 0.032
+    inscriptis        1.1.2       precision=0.517 ± 0.017  recall=0.993 ± 0.001  F1=0.679 ± 0.015 accuracy=0.000 ± 0.000
+    html2text         2020.1.16   precision=0.499 ± 0.017  recall=0.983 ± 0.002  F1=0.662 ± 0.015 accuracy=0.000 ± 0.000
+    justext           2.2.0       precision=0.858 ± 0.017  recall=0.754 ± 0.028  F1=0.802 ± 0.018 accuracy=0.088 ± 0.021
+    beautifulsoup     4.9.3       precision=0.499 ± 0.017  recall=0.994 ± 0.001  F1=0.665 ± 0.015 accuracy=0.000 ± 0.000
 
 Below you can find more details about the packages and result reproduction.
 
