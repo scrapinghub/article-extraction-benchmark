@@ -7,6 +7,7 @@ import random
 import re
 import statistics
 from typing import Any, Dict, Tuple, List
+import importlib
 
 
 def main():
@@ -19,19 +20,41 @@ def main():
     parser.add_argument('--bootstrap-differences', action='store_true',
                         help='run bootstrap for differences')
     parser.add_argument('--output', type=Path, help='output results as json')
+    parser.add_argument('--parser', type=str, help='Specify a parser name to evaluate only that parser')
+    
     args = parser.parse_args()
     ground_truth = load_json(Path('ground-truth.json'))
     metrics_by_name = {}
-    for path in sorted(Path('output').glob('*.json')):
-        name = path.stem
+
+    if args.parser:
+        name = args.parser
+        path = Path('output') / f'{name}.json'
+        if not path.exists():
+            try:
+                extractor_module = importlib.import_module(f'extractors.run_{name}')
+                extractor_module.main()
+            except:
+                raise ValueError(f'Parser {name} not found')
+
         metrics = evaluate(ground_truth, load_json(path), args.n_bootstrap)
         print('{name:<20} '
-              'precision={precision:.3f} ± {precision_std:.3f}  '
-              'recall={recall:.3f} ± {recall_std:.3f}  '
-              'F1={f1:.3f} ± {f1_std:.3f} '
-              'accuracy={accuracy:.3f} ± {accuracy_std:.3f} '
-              .format(name=name, **metrics))
+            'precision={precision:.3f} ± {precision_std:.3f}  '
+            'recall={recall:.3f} ± {recall_std:.3f}  '
+            'F1={f1:.3f} ± {f1_std:.3f} '
+            'accuracy={accuracy:.3f} ± {accuracy_std:.3f} '
+            .format(name=name, **metrics))
         metrics_by_name[name] = metrics
+    else:
+        for path in sorted(Path('output').glob('*.json')):
+            name = path.stem
+            metrics = evaluate(ground_truth, load_json(path), args.n_bootstrap)
+            print('{name:<20} '
+                'precision={precision:.3f} ± {precision_std:.3f}  '
+                'recall={recall:.3f} ± {recall_std:.3f}  '
+                'F1={f1:.3f} ± {f1_std:.3f} '
+                'accuracy={accuracy:.3f} ± {accuracy_std:.3f} '
+                .format(name=name, **metrics))
+            metrics_by_name[name] = metrics
 
     if args.bootstrap_differences:
         # check differences with bootstrap
