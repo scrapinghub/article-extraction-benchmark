@@ -5,6 +5,8 @@ import json
 import glob
 import os.path
 
+# Boilerpipe requires Python 2 and Java
+# https://github.com/misja/python-boilerpipe?tab=readme-ov-file#installation
 from boilerpipe.extract import Extractor
 
 

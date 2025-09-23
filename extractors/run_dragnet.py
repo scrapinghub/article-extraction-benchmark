@@ -3,6 +3,9 @@ import gzip
 import json
 from pathlib import Path
 
+# Prerequisites: numpy, Cython, libxml2 headers
+#
+# -e git+https://github.com/dragnet-org/dragnet.git@1b65e7b0897ca061b5c90b3eefffbfc156a0cc3b#egg=dragnet
 from dragnet import extract_content
 
 

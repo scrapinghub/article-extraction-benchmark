@@ -22,14 +22,16 @@ def main():
     args = parser.parse_args()
     ground_truth = load_json(Path('ground-truth.json'))
     metrics_by_name = {}
+
+    print(f'{'':<20} {'F1':<13}  {'precision':<13}  {'recall':<13}  {'accuracy':<13}')
     for path in sorted(Path('output').glob('*.json')):
         name = path.stem
         metrics = evaluate(ground_truth, load_json(path), args.n_bootstrap)
         print('{name:<20} '
-              'precision={precision:.3f} ± {precision_std:.3f}  '
-              'recall={recall:.3f} ± {recall_std:.3f}  '
-              'F1={f1:.3f} ± {f1_std:.3f} '
-              'accuracy={accuracy:.3f} ± {accuracy_std:.3f} '
+              '{f1:.3f} ± {f1_std:.3f}  '
+              '{precision:.3f} ± {precision_std:.3f}  '
+              '{recall:.3f} ± {recall_std:.3f}  '
+              '{accuracy:.3f} ± {accuracy_std:.3f}'
               .format(name=name, **metrics))
         metrics_by_name[name] = metrics
 

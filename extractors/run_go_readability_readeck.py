@@ -9,7 +9,7 @@ from tempfile import mkstemp
 
 
 # built executable file
-CLI_PATH = Path('extractors/go_domdistiller/go_domdistiller_cli')
+CLI_PATH = Path('extractors/go_readability_readeck/go_readability_cli')
 
 
 def normalize(s: str) -> str:
@@ -24,13 +24,13 @@ def main():
             html = f.read()
         item_id = path.stem.split('.')[0]
 
-        # get extracted content from go-domdistiller
+        # get extracted content from go-readadbility
         result = subprocess.run(CLI_PATH, input=html, text=True, stdout=subprocess.PIPE)
         if result.returncode != 0:
             print("failed: ",path,file=sys.stderr)
 
         output[item_id] = {'articleBody': normalize(result.stdout)}
-    (Path('output') / 'go_domdistiller.json').write_text(
+    (Path('output') / 'go_readability_fork.json').write_text(
         json.dumps(output, sort_keys=True, ensure_ascii=False, indent=4),
         encoding='utf8')
 

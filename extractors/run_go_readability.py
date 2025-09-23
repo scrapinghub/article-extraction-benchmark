@@ -3,12 +3,18 @@ import gzip
 import json
 import os
 import subprocess
+import sys
 from pathlib import Path
 from tempfile import mkstemp
 
 
 # built executable file
 CLI_PATH = Path('extractors/go_readability/go_readability_cli')
+
+
+def normalize(s: str) -> str:
+    # remove all U+00AD (SOFT HYPHEN)
+    return s.replace('\u00ad', '')
 
 
 def main():
@@ -18,18 +24,12 @@ def main():
             html = f.read()
         item_id = path.stem.split('.')[0]
 
-        # save html to temp file
-        temp_filepath = mkstemp()[1]
-        with open(temp_filepath, 'wt') as fw:
-            fw.write(html)
-
         # get extracted content from go-readadbility
-        result = subprocess.run([CLI_PATH, temp_filepath], stdout=subprocess.PIPE)
+        result = subprocess.run(CLI_PATH, input=html, text=True, stdout=subprocess.PIPE)
+        if result.returncode != 0:
+            print("failed: ",path,file=sys.stderr)
 
-        # destroy temp file
-        os.remove(temp_filepath)
-
-        output[item_id] = {'articleBody': result.stdout.decode('utf-8')}
+        output[item_id] = {'articleBody': normalize(result.stdout)}
     (Path('output') / 'go_readability.json').write_text(
         json.dumps(output, sort_keys=True, ensure_ascii=False, indent=4),
         encoding='utf8')

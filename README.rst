@@ -6,13 +6,15 @@ extraction for commercial services
 `Zyte Automatic Extraction (ours) <https://www.zyte.com/data-types/news-scraping-api/>`_,
 `Diffbot <https://www.diffbot.com/>`_
 and open-source libraries
-`newspaper3k <https://newspaper.readthedocs.io/en/latest/>`_,
+`newspaper4k <https://github.com/AndyTheFactory/newspaper4k>`_,
 `readability-lxml <https://github.com/buriy/python-readability>`_,
 `dragnet <https://github.com/dragnet-org/dragnet>`_,
 `boilerpipe <https://github.com/misja/python-boilerpipe>`_,
 `html-text <https://github.com/TeamHG-Memex/html-text>`_,
 `trafilatura <https://github.com/adbar/trafilatura>`_,
+`go-trafilatura <https://github.com/markusmobius/go-trafilatura>`_,
 `go-readability <https://github.com/go-shiori/go-readability>`_,
+`readeck/go-readability <https://codeberg.org/readeck/go-readability>`_,
 `Readability.js <https://github.com/mozilla/readability>`_,
 `Go-DomDistiller <https://github.com/markusmobius/go-domdistiller>`_.
 `news-please <https://github.com/fhamborg/news-please>`_.
@@ -47,7 +49,25 @@ Results of the initial evaluation, done in November 2019::
     readability-lxml  0.7.1     0.922 ± 0.014  0.913 ± 0.014  0.931 ± 0.016  0.315 ± 0.035
     xpath-text        4.4.2     0.394 ± 0.020  0.246 ± 0.016  0.992 ± 0.001  0.000 ± 0.000
 
-Result of packages added after original evaluation::
+Results of the latest evaluation with open source libraries added::
+
+                         version    F1             precision      recall         accuracy
+    go-trafilatura       ae7ea06    0.960 ± 0.007  0.940 ± 0.009  0.980 ± 0.006  0.287 ± 0.033
+    trafilatura          2.0.0      0.958 ± 0.006  0.938 ± 0.009  0.978 ± 0.006  0.293 ± 0.033
+    newspaper4k          0.9.3.1    0.949 ± 0.008  0.964 ± 0.008  0.934 ± 0.011  0.326 ± 0.033
+    news_please          1.6.16     0.948 ± 0.008  0.964 ± 0.008  0.933 ± 0.011  0.326 ± 0.034
+    readability_js       0.6.0      0.947 ± 0.005  0.914 ± 0.008  0.982 ± 0.003  0.166 ± 0.028
+    go_readability_fork  fb0fbc5    0.947 ± 0.005  0.914 ± 0.008  0.982 ± 0.003  0.166 ± 0.028
+    go_readability       9f5bf5c    0.934 ± 0.009  0.900 ± 0.011  0.971 ± 0.009  0.188 ± 0.029
+    go_domdistiller      25b8d04    0.927 ± 0.007  0.901 ± 0.010  0.956 ± 0.009  0.061 ± 0.017
+    readability-lxml     0.8.4.1    0.922 ± 0.013  0.913 ± 0.014  0.931 ± 0.015  0.315 ± 0.034
+    goose3               3.1.20     0.896 ± 0.015  0.940 ± 0.013  0.856 ± 0.020  0.232 ± 0.031
+    beautifulsoup        4.13.5     0.860 ± 0.016  0.850 ± 0.016  0.870 ± 0.020  0.006 ± 0.006
+    justext              3.0.2      0.804 ± 0.018  0.858 ± 0.016  0.756 ± 0.027  0.088 ± 0.021
+    inscriptis           2.6.0      0.679 ± 0.015  0.517 ± 0.018  0.992 ± 0.001  0.000 ± 0.000
+    html2text            2025.4.15  0.662 ± 0.015  0.499 ± 0.017  0.983 ± 0.002  0.000 ± 0.000
+
+Earlier results from April 2021::
 
                       version   F1             precision      recall         accuracy
     trafilatura       0.5.1     0.945 ± 0.009  0.925 ± 0.011  0.966 ± 0.009  0.221 ± 0.031
@@ -108,7 +128,7 @@ In addition to benchmarking AutoExtract and Diffbot services, we also benchmark 
 open-source libraries that work directly on HTML files without a need for rendering
 or external resources:
 
-- newspaper3k: https://github.com/codelucas/newspaper
+- newspaper4k: https://github.com/AndyTheFactory/newspaper4k
 - readability-lxml: https://github.com/buriy/python-readability
 - dragnet: https://github.com/dragnet-org/dragnet
 - boilerpipe: https://github.com/misja/python-boilerpipe
@@ -116,7 +136,9 @@ or external resources:
   this is a baseline which extracts the full text of HTML page
 - trafilatura: https://github.com/adbar/trafilatura contributed by the author
   at https://github.com/scrapinghub/article-extraction-benchmark/pull/4
+- go-trafilatura: https://github.com/markusmobius/go-trafilatura
 - go-readability: https://github.com/go-shiori/go-readability
+- readeck/go-readability: https://codeberg.org/readeck/go-readability/src/branch/main/FORK.md
 - Readability.js: https://github.com/mozilla/readability
 - Go-DomDistiller: https://github.com/markusmobius/go-domdistiller
 - news-please: https://github.com/fhamborg/news-please
@@ -133,21 +155,14 @@ or external resources:
 Output from these libraries is already present in the repo in ``output/*.json`` files.
 They were generated with ``extractors/run_*.py`` files.
 
-All dependencies are in ``requirements.txt``.
-Note that dragnet may fail to install at first try, as
-you need to have ``numpy`` and ``Cython`` installed, and have ``libxml2`` headers
-(``libxml2-dev`` on Ubuntu).
+You can re-generate output JSON files with:
 
-boilerpipe requires a custom installation: use python2, you also need Java
-(e.g. install ``default-jre`` in Ubuntu), install it with
-``pip install -e git+https://github.com/misja/python-boilerpipe.git@ab3694d7bf695b73f0684a028e70aa816d63e6cb#egg=boilerpipe``
+    python3 -m venv ./venv
+    source ./venv/bin/activate
+    make run-all
 
-go-readability requires a custom installation: see README in ``extractors/go_readability``.
-
-Readability.js require a custom installation: install nodejs and install cli tool:
-``npm install -g readability-cli@2.2.1-pre``
-
-Go-DomDistiller requires a custom installation: see README in ``extractors/go_domdistiller``.
+This will install Python dependencies from ``requirements.txt`` into a
+`virtual environment <https://docs.python.org/3/library/venv.html>`_
 
 Evaluation
 ----------

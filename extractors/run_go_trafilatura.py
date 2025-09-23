@@ -7,30 +7,28 @@ from pathlib import Path
 from tempfile import mkstemp
 
 
+# built executable file
+CLI_PATH = Path('extractors/go_trafilatura/go_trafilatura_cli')
+
+
+def normalize(s: str) -> str:
+    # remove all U+00AD (SOFT HYPHEN)
+    return s.replace('\u00ad', '')
+
 def main():
     output = {}
     for path in Path('html').glob('*.html.gz'):
-        item_id = path.stem.split('.')[0]
-
         with gzip.open(path, 'rt', encoding='utf8') as f:
             html = f.read()
-        
-        # get extracted content from Readability.js
-        result = subprocess.run(
-            ["node", "cli.js"],
-            input=html,
-            cwd=Path(__file__).parent / "readability_js",
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True
-        )
+
+        result = subprocess.run(CLI_PATH, text=True, input=html, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
         if result.returncode != 0:
             print(f"Error processing {path}: {result.stderr}", file=sys.stderr)
-            continue
 
-        output[item_id] = {'articleBody': result.stdout}
-    (Path('output') / 'readability_js.json').write_text(
+        item_id = path.stem.split('.')[0]
+        output[item_id] = {'articleBody': normalize(result.stdout)}
+    (Path('output') / 'go_trafilatura.json').write_text(
         json.dumps(output, sort_keys=True, ensure_ascii=False, indent=4),
         encoding='utf8')
 

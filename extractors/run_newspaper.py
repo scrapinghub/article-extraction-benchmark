@@ -3,7 +3,7 @@ import gzip
 import json
 from pathlib import Path
 
-from newspaper import Article
+import newspaper
 
 
 def main():
@@ -14,8 +14,7 @@ def main():
         with gzip.open(path, 'rt', encoding='utf8') as f:
             html = f.read()
         item_id = path.stem.split('.')[0]
-        article = Article(url_by_item_id[item_id])
-        article.set_html(html)
+        article = newspaper.article(url_by_item_id[item_id], input_html=html)
         article.parse()
         output[item_id] = {'articleBody': article.text}
     (Path('output') / 'newspaper.json').write_text(

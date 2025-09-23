@@ -12,7 +12,7 @@ To use the library I'm wrote a simple cli-module that reads the contents of the 
 Installation
 ------------
 
-1. Install golang (I'm used version ``1.15.8``)
+1. Install golang 1.23+
 2. Go to the folder containing this file
 3. Build an executable file:
 
