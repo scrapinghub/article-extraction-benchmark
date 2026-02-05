@@ -4,7 +4,8 @@ import json
 import subprocess
 import sys
 from pathlib import Path
-from tempfile import mkstemp
+
+from output_util import node_dependency_version, write_output_json
 
 
 def main():
@@ -30,9 +31,14 @@ def main():
             continue
 
         output[item_id] = {'articleBody': result.stdout}
-    (Path('output') / 'readability_js.json').write_text(
-        json.dumps(output, sort_keys=True, ensure_ascii=False, indent=4),
-        encoding='utf8')
+    write_output_json(
+        Path("output") / "readability_js.json",
+        output=output,
+        version=node_dependency_version(
+            Path(__file__).parent / "readability_js" / "package.json",
+            "@mozilla/readability",
+        ),
+    )
 
 
 if __name__ == '__main__':

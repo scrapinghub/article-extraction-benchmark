@@ -5,6 +5,8 @@ from pathlib import Path
 
 from newsplease import NewsPlease
 
+from output_util import python_dist_version, write_output_json
+
 
 def main():
     output = {}
@@ -14,9 +16,11 @@ def main():
         item_id = path.stem.split('.')[0]
         article = NewsPlease.from_html(html, url=None)
         output[item_id] = {'articleBody': article.maintext}
-    (Path('output') / 'news_please.json').write_text(
-        json.dumps(output, sort_keys=True, ensure_ascii=False, indent=4),
-        encoding='utf8')
+    write_output_json(
+        Path("output") / "news_please.json",
+        output=output,
+        version=python_dist_version("news-please"),
+    )
 
 
 if __name__ == '__main__':

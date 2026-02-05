@@ -1,6 +1,6 @@
 import pytest
 
-from evaluate import string_shingle_matching, _ngrams, _tokenize
+from evaluate import load_prediction, string_shingle_matching, _ngrams, _tokenize
 
 
 def test_tokenize():
@@ -33,3 +33,19 @@ def test_ngrams(text, n, expected):
      ])
 def test_string_shingle_matching(true, pred, tp_fp_fn):
     assert string_shingle_matching(true, pred, ngram_n=3) == tp_fp_fn
+
+
+def test_load_prediction_supports_wrapped_and_legacy(tmp_path):
+    legacy = {"abc": {"articleBody": "hello"}}
+    legacy_path = tmp_path / "legacy.json"
+    legacy_path.write_text(__import__("json").dumps(legacy))
+    loaded, version = load_prediction(legacy_path)
+    assert loaded == legacy
+    assert version == ""
+
+    wrapped = {"version": "1.2.3", "output": legacy}
+    wrapped_path = tmp_path / "wrapped.json"
+    wrapped_path.write_text(__import__("json").dumps(wrapped))
+    loaded, version = load_prediction(wrapped_path)
+    assert loaded == legacy
+    assert version == "1.2.3"

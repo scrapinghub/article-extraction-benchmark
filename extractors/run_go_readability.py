@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 import gzip
 import json
-import os
 import subprocess
 import sys
 from pathlib import Path
-from tempfile import mkstemp
+
+from output_util import go_mod_dep_version, write_output_json
 
 
 # built executable file
@@ -30,9 +30,14 @@ def main():
             print("failed: ",path,file=sys.stderr)
 
         output[item_id] = {'articleBody': normalize(result.stdout)}
-    (Path('output') / 'go_readability.json').write_text(
-        json.dumps(output, sort_keys=True, ensure_ascii=False, indent=4),
-        encoding='utf8')
+    write_output_json(
+        Path("output") / "go_readability.json",
+        output=output,
+        version=go_mod_dep_version(
+            Path("extractors/go_readability/go.mod"),
+            "github.com/go-shiori/go-readability",
+        ),
+    )
 
 
 if __name__ == '__main__':

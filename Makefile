@@ -8,9 +8,10 @@ setup:
 	make -C extractors/go_readability
 	make -C extractors/go_readability_readeck
 	make -C extractors/go_trafilatura
+	make -C extractors/rust_extractors build
 
 .PHONY: run-all
-run-all: run-go run-python
+run-all: run-go run-python run-rust
 	python extractors/run_readability_js.py
 
 .PHONY: run-go
@@ -33,6 +34,10 @@ run-python: setup
 	python extractors/run_readability.py
 	python extractors/run_trafilatura.py
 	python extractors/run_xpath_text.py
+
+.PHONY: run-rust
+run-rust: setup
+	python extractors/run_rust.py
 
 .PHONY: run-slow
 # These libraries use machine learning inference, so they can be extremely slow

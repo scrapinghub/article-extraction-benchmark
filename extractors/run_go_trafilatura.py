@@ -4,7 +4,8 @@ import json
 import subprocess
 import sys
 from pathlib import Path
-from tempfile import mkstemp
+
+from output_util import go_mod_dep_version, write_output_json
 
 
 # built executable file
@@ -28,9 +29,14 @@ def main():
 
         item_id = path.stem.split('.')[0]
         output[item_id] = {'articleBody': normalize(result.stdout)}
-    (Path('output') / 'go_trafilatura.json').write_text(
-        json.dumps(output, sort_keys=True, ensure_ascii=False, indent=4),
-        encoding='utf8')
+    write_output_json(
+        Path("output") / "go_trafilatura.json",
+        output=output,
+        version=go_mod_dep_version(
+            Path("extractors/go_trafilatura/go.mod"),
+            "github.com/markusmobius/go-trafilatura",
+        ),
+    )
 
 
 if __name__ == '__main__':

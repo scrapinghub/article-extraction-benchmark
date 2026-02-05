@@ -5,6 +5,8 @@ from pathlib import Path
 
 from goose3 import Goose
 
+from output_util import python_dist_version, write_output_json
+
 
 def main():
     output = {}
@@ -15,9 +17,11 @@ def main():
         g = Goose()
         article = g.extract(raw_html=html)
         output[item_id] = {'articleBody': article.cleaned_text}
-    (Path('output') / 'goose3.json').write_text(
-        json.dumps(output, sort_keys=True, ensure_ascii=False, indent=4),
-        encoding='utf8')
+    write_output_json(
+        Path("output") / "goose3.json",
+        output=output,
+        version=python_dist_version("goose3"),
+    )
 
 
 if __name__ == '__main__':
