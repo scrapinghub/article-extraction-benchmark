@@ -23,16 +23,20 @@ def main():
     ground_truth = load_json(Path('ground-truth.json'))
     metrics_by_name = {}
 
-    print(f'{'':<20} {'F1':<13}  {'precision':<13}  {'recall':<13}  {'accuracy':<13}')
+    print(
+        f'{"":<20} {"version":<12} {"F1":<13}  {"precision":<13}  {"recall":<13}  {"accuracy":<13}'
+    )
     for path in sorted(Path('output').glob('*.json')):
         name = path.stem
-        metrics = evaluate(ground_truth, load_json(path), args.n_bootstrap)
-        print('{name:<20} '
+        prediction, version = load_prediction(path)
+        metrics = evaluate(ground_truth, prediction, args.n_bootstrap)
+        print('{name:<20} {version:<12} '
               '{f1:.3f} ± {f1_std:.3f}  '
               '{precision:.3f} ± {precision_std:.3f}  '
               '{recall:.3f} ± {recall_std:.3f}  '
               '{accuracy:.3f} ± {accuracy_std:.3f}'
-              .format(name=name, **metrics))
+              .format(name=name, version=version, **metrics))
+        metrics["version"] = version
         metrics_by_name[name] = metrics
 
     if args.bootstrap_differences:
@@ -49,6 +53,14 @@ def main():
     if args.output:
         args.output.write_text(
             json.dumps(metrics_by_name, indent=4, sort_keys=True))
+
+
+def load_prediction(path: Path) -> Tuple[Dict[str, Dict], str]:
+    data = load_json(path)
+    if isinstance(data, dict) and set(data.keys()) == {"version", "output"} and isinstance(data.get("output"), dict):
+        version = data.get("version") or ""
+        return data["output"], str(version)
+    return data, ""
 
 
 def evaluate(
@@ -80,7 +92,7 @@ def evaluate(
         b_values.setdefault('accuracy', []).append(
             statistics.mean([accuracies[i] for i in indices]))
     for key, values in sorted(b_values.items()):
-        metrics[f'{key}_std'] = statistics.stdev(values)
+        metrics[f'{key}_std'] = statistics.stdev(values) if len(values) > 1 else 0.0
 
     return metrics
 
@@ -97,7 +109,7 @@ def print_metrics_diff(tp_fp_fns, other_tp_fp_fns, n_bootstrap):
             diffs.setdefault(key, []).append(metrics[key] - other_metrics[key])
     for key, values in sorted(diffs.items()):
         mean = statistics.mean(values)
-        std = statistics.stdev(values)
+        std = statistics.stdev(values) if len(values) > 1 else 0.0
         print(f'{key:<10} {mean:.3f} ± {std:.3f}')
 
 

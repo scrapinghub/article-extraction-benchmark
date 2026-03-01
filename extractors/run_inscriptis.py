@@ -5,6 +5,8 @@ from pathlib import Path
 
 from inscriptis import get_text
 
+from output_util import python_dist_version, write_output_json
+
 
 def main():
     output = {}
@@ -14,9 +16,11 @@ def main():
         item_id = path.stem.split('.')[0]
         content = get_text(html)
         output[item_id] = {'articleBody': content}
-    (Path('output') / 'inscriptis.json').write_text(
-        json.dumps(output, sort_keys=True, ensure_ascii=False, indent=4),
-        encoding='utf8')
+    write_output_json(
+        Path("output") / "inscriptis.json",
+        output=output,
+        version=python_dist_version("inscriptis"),
+    )
 
 
 if __name__ == '__main__':

@@ -6,6 +6,8 @@ from pathlib import Path
 import html_text
 from readability import Document
 
+from output_util import python_dist_version, write_output_json
+
 
 def main():
     output = {}
@@ -16,9 +18,11 @@ def main():
         doc = Document(html)
         text = html_text.extract_text(doc.summary(html_partial=True))
         output[item_id] = {'articleBody': text}
-    (Path('output') / 'readability.json').write_text(
-        json.dumps(output, sort_keys=True, ensure_ascii=False, indent=4),
-        encoding='utf8')
+    write_output_json(
+        Path("output") / "readability.json",
+        output=output,
+        version=python_dist_version("readability-lxml"),
+    )
 
 
 if __name__ == '__main__':

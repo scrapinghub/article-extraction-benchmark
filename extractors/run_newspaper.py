@@ -5,6 +5,8 @@ from pathlib import Path
 
 import newspaper
 
+from output_util import python_dist_version, write_output_json
+
 
 def main():
     output = {}
@@ -17,9 +19,11 @@ def main():
         article = newspaper.article(url_by_item_id[item_id], input_html=html)
         article.parse()
         output[item_id] = {'articleBody': article.text}
-    (Path('output') / 'newspaper.json').write_text(
-        json.dumps(output, sort_keys=True, ensure_ascii=False, indent=4),
-        encoding='utf8')
+    write_output_json(
+        Path("output") / "newspaper.json",
+        output=output,
+        version=python_dist_version("newspaper4k"),
+    )
 
 
 if __name__ == '__main__':

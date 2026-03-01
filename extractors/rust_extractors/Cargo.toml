@@ -1,0 +1,25 @@
+[package]
+name = "rust_extractors"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "rust_extractors_cli"
+path = "src/main.rs"
+
+[dependencies]
+august = "*"
+fast_html2md = { package = "fast_html2md", version = "*" }
+htmd = "*"
+html2md-rs = "*"
+html2text = "*"
+llm_readability = "*"
+mdka = "*"
+nanohtml2text = "*"
+dom_smoothie = "*"
+readabilityrs = "*"
+readability = "*"
+boilerpipe = "*"
+readable-readability = "*"
+rs_trafilatura = { package = "rs-trafilatura", git = "https://github.com/Murrough-Foley/rs-trafilatura" }
+url = "*"

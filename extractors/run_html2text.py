@@ -5,6 +5,8 @@ from pathlib import Path
 
 from html2text import HTML2Text
 
+from output_util import python_dist_version, write_output_json
+
 
 def main():
     output = {}
@@ -17,9 +19,11 @@ def main():
         h.ignore_images = True
         content = h.handle(html)
         output[item_id] = {'articleBody': content}
-    (Path('output') / 'html2text.json').write_text(
-        json.dumps(output, sort_keys=True, ensure_ascii=False, indent=4),
-        encoding='utf8')
+    write_output_json(
+        Path("output") / "html2text.json",
+        output=output,
+        version=python_dist_version("html2text"),
+    )
 
 
 if __name__ == '__main__':
