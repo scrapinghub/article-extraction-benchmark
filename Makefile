@@ -44,3 +44,4 @@ run-rust: setup
 run-slow: setup
 	python extractors/run_news_please.py
 	python extractors/run_newspaper.py
+	python extractors/run_readerlmv2.py

@@ -8,4 +8,7 @@ lxml<6
 news-please==1.6.16
 newspaper4k==0.9.3.1
 readability-lxml==0.8.4.1
+torch
+tqdm
 trafilatura==2.0.0
+transformers

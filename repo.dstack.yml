@@ -1,0 +1,25 @@
+type: dev-environment
+name: oh-pls-stop-my-dev-env-2
+
+# If `image` is not specified, dstack uses its default image
+# python: "3.10"
+image: nvcr.io/nvidia/pytorch:26.01-py3
+
+ide: cursor
+
+repos:
+  - url: git@github.com:edkrueger/article-extraction-benchmark.git 
+    path: ./article-extraction-benchmark
+
+files:
+  - ./requirements.txt 
+
+resources:
+  gpu:
+    name: ["RTX4090", "RTX5090", "A4500", "A5000"]
+
+backends:
+  - runpod
+
+retry:
+  duration: 1h
